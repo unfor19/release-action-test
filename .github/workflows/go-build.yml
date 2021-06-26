@@ -23,3 +23,12 @@ jobs:
           lang-name: golang
           lang-version: 1.16
           action: build
+      - name: test
+        uses: unfor19/release-action/golang/1.16@master
+        env:
+          GOARCH: ${{ matrix.GOARCH }}
+          GOOS: linux
+        with:
+          lang-name: golang
+          lang-version: 1.16
+          action: test
