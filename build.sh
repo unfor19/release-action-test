@@ -1,3 +1,11 @@
 #!/bin/bash
 echo "build app"
-echo "finished" > .status
+PROJECT_ROOT="/go/src/github.com/${GITHUB_REPOSITORY}"
+mkdir -p "$PROJECT_ROOT"
+rmdir "$PROJECT_ROOT"
+ln -s "$GITHUB_WORKSPACE" "$PROJECT_ROOT"
+go mod
+cd "$PROJECT_ROOT"
+go mod download
+go build -o app
+./app
