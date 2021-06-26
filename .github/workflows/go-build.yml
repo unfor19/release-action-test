@@ -1,0 +1,25 @@
+name: Build Binaries
+
+on:
+  push:
+    branches: [master] # creates a pre-release
+
+jobs:
+  build-linux-binaries:
+    name: linux
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        include:
+          - GOARCH: "amd64"
+    steps:
+      - uses: actions/checkout@master
+      - name: build
+        uses: unfor19/release-action@master
+        env:
+          # GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GOARCH: ${{ matrix.GOARCH }}
+          GOOS: linux
+        with:
+          lang_name: golang
+          lang_version: 1.16
