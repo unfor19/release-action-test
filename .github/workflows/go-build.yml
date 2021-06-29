@@ -46,7 +46,7 @@ jobs:
           action: build
           src-dir: golang
           project-name: app
-      - name: test
+      - name: Go Test
         uses: unfor19/release-action/golang/1.16@master
         env:
           GOARCH: ${{ matrix.GOARCH }}
@@ -56,3 +56,14 @@ jobs:
           lang-version: 1.16
           action: test
           src-dir: golang
+      - name: Release
+        uses: unfor19/release-action/golang/1.16@master
+        env:
+          GOARCH: ${{ matrix.GOARCH }}
+          GOOS: linux
+        with:
+          lang-name: golang
+          lang-version: 1.16
+          action: release
+          src-dir: golang
+          project-name: app
