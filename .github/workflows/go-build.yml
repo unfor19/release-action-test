@@ -45,6 +45,7 @@ jobs:
           lang-version: 1.16
           action: build
           src-dir: golang
+          project-name: app
       - name: test
         uses: unfor19/release-action/golang/1.16@master
         env:
