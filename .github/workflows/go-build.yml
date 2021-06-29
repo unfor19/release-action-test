@@ -67,3 +67,4 @@ jobs:
           action: release
           src-dir: golang
           project-name: app
+          gh-token: ${{ secrets.GH_TOKEN }}
