@@ -40,7 +40,7 @@ jobs:
           lang-version: 1.16
           action: dependencies
           src-dir: golang
-      - name: build
+      - name: Go Build
         uses: unfor19/release-action/golang/1.16@master
         env:
           GOARCH: ${{ matrix.GOARCH }}
