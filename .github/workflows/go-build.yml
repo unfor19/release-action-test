@@ -14,6 +14,10 @@ jobs:
       matrix:
         include:
           - GOARCH: "amd64"
+          - GOARCH: "386"
+          - GOARCH: "arm64"
+    env:
+      GOOS: linux
     steps:
       - uses: actions/checkout@master
       - name: Cache Go Build and Modules
@@ -31,7 +35,6 @@ jobs:
         uses: unfor19/release-action/golang/1.16@master
         env:
           GOARCH: ${{ matrix.GOARCH }}
-          GOOS: linux
         with:
           lang-name: golang
           lang-version: 1.16
@@ -41,7 +44,6 @@ jobs:
         uses: unfor19/release-action/golang/1.16@master
         env:
           GOARCH: ${{ matrix.GOARCH }}
-          GOOS: linux
         with:
           lang-name: golang
           lang-version: 1.16
@@ -52,7 +54,6 @@ jobs:
         uses: unfor19/release-action/golang/1.16@master
         env:
           GOARCH: ${{ matrix.GOARCH }}
-          GOOS: linux
         with:
           lang-name: golang
           lang-version: 1.16
@@ -62,7 +63,6 @@ jobs:
         uses: unfor19/release-action/golang/1.16@master
         env:
           GOARCH: ${{ matrix.GOARCH }}
-          GOOS: linux
         with:
           lang-name: golang
           lang-version: 1.16
