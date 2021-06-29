@@ -14,18 +14,18 @@ jobs:
           - GOARCH: "amd64"
     steps:
       - uses: actions/checkout@master
-      - name: Cache Go Modules
+      - name: Cache Go Build and Modules
         id: cache-go-modules
         uses: actions/cache@v2
         with:
           path: |
-            ~/.cache/go-build
-            ~/go/pkg/mod
-          key: ${{ runner.os }}-go-${{ hashFiles('golang/go.sum') }}
+            .cache-modules
+            .cache-go-build
+          key: ${{ runner.os }}-golang-${{ matrix.GOARCH }}-${{ hashFiles('go.sum') }}
           restore-keys: |
-            ${{ runner.os }}-go-
+            ${{ runner.os }}-golang-${{ matrix.GOARCH }}-
       - name: Get Dependencies
-        if: steps.cache-go-modules.outputs.cache-hit != 'true'
+        # if: steps.cache-go-modules.outputs.cache-hit != 'true'
         uses: unfor19/release-action/golang/1.16@master
         env:
           GOARCH: ${{ matrix.GOARCH }}
