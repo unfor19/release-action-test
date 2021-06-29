@@ -3,6 +3,8 @@ name: Build Binaries
 on:
   push:
     branches: [master] # creates a pre-release
+  release:
+    types: [released] # does not include pre-release
 
 jobs:
   build-linux-binaries:
