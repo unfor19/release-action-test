@@ -52,8 +52,6 @@ jobs:
           project-name: app
       - name: Go Test
         uses: unfor19/release-action/golang/1.16@master
-        env:
-          GOARCH: ${{ matrix.GOARCH }}
         with:
           lang-name: golang
           lang-version: 1.16
