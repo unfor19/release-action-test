@@ -34,6 +34,7 @@ jobs:
           lang-name: golang
           lang-version: 1.16
           action: dependencies
+          src-dir: golang
       - name: build
         uses: unfor19/release-action/golang/1.16@master
         env:
@@ -43,6 +44,7 @@ jobs:
           lang-name: golang
           lang-version: 1.16
           action: build
+          src-dir: golang
       - name: test
         uses: unfor19/release-action/golang/1.16@master
         env:
@@ -52,3 +54,4 @@ jobs:
           lang-name: golang
           lang-version: 1.16
           action: test
+          src-dir: golang
