@@ -36,8 +36,6 @@ jobs:
         env:
           GOARCH: ${{ matrix.GOARCH }}
         with:
-          lang-name: golang
-          lang-version: 1.16
           action: dependencies
           src-dir: golang
       - name: Go Build
@@ -45,16 +43,12 @@ jobs:
         env:
           GOARCH: ${{ matrix.GOARCH }}
         with:
-          lang-name: golang
-          lang-version: 1.16
           action: build
           src-dir: golang
           project-name: app
       - name: Go Test
         uses: unfor19/release-action/golang/1.16@master
         with:
-          lang-name: golang
-          lang-version: 1.16
           action: test
           src-dir: golang
       - name: Release
@@ -62,8 +56,6 @@ jobs:
         env:
           GOARCH: ${{ matrix.GOARCH }}
         with:
-          lang-name: golang
-          lang-version: 1.16
           action: release
           src-dir: golang
           project-name: app
