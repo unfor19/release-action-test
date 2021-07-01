@@ -1,3 +1,8 @@
 #!/bin/bash
 cd ./golang || exit 1
-go build -o app
+
+if [[ "$GOOS" = "windows" ]]; then
+    _EXT=".exe"
+fi
+
+go build -o "app{$_EXT}"
