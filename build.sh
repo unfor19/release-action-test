@@ -5,4 +5,4 @@ if [[ "$GOOS" = "windows" ]]; then
     _EXT=".exe"
 fi
 
-go build -o "app{$_EXT}"
+go build -o "app${_EXT}"
