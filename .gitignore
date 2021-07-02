@@ -4,3 +4,8 @@
 *.tgz
 *.tar*
 *.zip
+
+# terraform
+!.go-version
+!.hashibot.hcl
+!.tfdev
