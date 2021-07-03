@@ -3,8 +3,8 @@ name: Release-Test-go1.17beta1
 on:
   push:
     branches:
-      - master # creates a pre-release
-      # - nowhere
+      # - master # creates a pre-release
+      - nowhere
   release:
     types:
       - released # does not include pre-release
