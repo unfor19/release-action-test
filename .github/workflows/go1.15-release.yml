@@ -3,17 +3,17 @@ name: Release-Test-go1.15
 on:
   push:
     branches:
-      - master # creates a pre-release
-      # - nowhere
-  release:
-    types:
-      - released # does not include pre-release
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: "Branch to set as prerelease"
-        required: false
-        default: "master"
+      # - master # creates a pre-release
+      - nowhere
+  # release:
+  #   types:
+  #     - released # does not include pre-release
+  # workflow_dispatch:
+  #   inputs:
+  #     branch:
+  #       description: "Branch to set as prerelease"
+  #       required: false
+  #       default: "master"
 
 jobs:
   release:
