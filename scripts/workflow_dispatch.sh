@@ -31,7 +31,7 @@ wget -q -O "$_FILE_NAME" "$TARGET_URL"
 log_msg "Finished downloading file"
 
 log_msg "Extracting file ..."
-tar -xzvf "$_FILE_NAME"
+tar -xzf "$_FILE_NAME"
 log_msg "Finished extracting file"
 
 log_msg "Getting SRC_DIR ..."
