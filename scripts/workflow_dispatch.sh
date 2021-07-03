@@ -34,7 +34,7 @@ ls -lh
 log_msg "Finished downloading file"
 
 log_msg "Extracting file ..."
-tar -xzf "$_FILE_NAME" --one-top-level
+tar -xzf "$_FILE_NAME" --one-top-level --strip-components=1
 ls -lh
 log_msg "Finished extracting file"
 
