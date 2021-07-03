@@ -28,18 +28,12 @@ jobs:
       GOOS: ${{ matrix.GOOS }}
       GOARCH: ${{ matrix.GOARCH }}
     steps:
-      # - uses: actions/checkout@master
+      - uses: actions/checkout@master
       - name: Get src-dir path
         id: get-src-dir-path
         env:
           TARGET_URL: ${{ github.event.inputs.target-url }}
-        run: |
-          set -e
-          _FILE_NAME=$(basename "${TARGET_URL}")
-          wget -q -O "$_FILE_NAME" "$TARGET_URL"
-          tar -xzf "$_FILE_NAME"
-          _SRC_DIR=$(tar -tzf "$_FILE_NAME" | head -1 | cut -f1 -d"/")
-          echo "::set-output name=src-dir::${_SRC_DIR}"
+        run: scripts/workflow_dispatch.sh
       - name: Cache Go Build and Modules
         id: cache-go-modules
         uses: actions/cache@v2
