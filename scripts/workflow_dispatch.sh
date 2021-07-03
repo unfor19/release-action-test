@@ -27,7 +27,7 @@ _FILE_NAME=$(basename "${TARGET_URL}")
 log_msg "File name: ${_FILE_NAME}"
 
 log_msg "Downloading file ..."
-wget -O "$_FILE_NAME" "$TARGET_URL"
+wget -q -O "$_FILE_NAME" "$TARGET_URL"
 log_msg "Finished downloading file"
 
 log_msg "Extracting file ..."
@@ -35,7 +35,7 @@ tar -xzvf "$_FILE_NAME"
 log_msg "Finished extracting file"
 
 log_msg "Getting SRC_DIR ..."
-_SRC_DIR=$(tar -tzf "$_FILE_NAME" | head -1 | cut -f1 -d"/")
+_SRC_DIR=$(tar -tf "$_FILE_NAME" | head -1 | cut -f1 -d/)
 log_msg "SRC_DIR=${_SRC_DIR}"
 
 log_msg "Setting output for GitHub Action ..."
