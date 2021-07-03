@@ -38,7 +38,7 @@ jobs:
           wget -q -O "$_FILE_NAME" "$TARGET_URL"
           tar -xzf "$_FILE_NAME"
           _SRC_DIR="$(tar -tzf "$_FILE_NAME" | head -1 | cut -f1 -d"/")"
-          echo '::set-output name=src-dir::'"${_SRC_DIR}"'
+          echo "SRC_DIR=${_SRC_DIR}" >> $GITHUB_ENV
       - name: Cache Go Build and Modules
         id: cache-go-modules
         uses: actions/cache@v2
@@ -54,24 +54,20 @@ jobs:
         uses: unfor19/release-action/golang/1.17beta1@master
         with:
           action: dependencies
-          src-dir: ${{ steps.get-src-dir-path.outputs.src-dir }}"
-          project-name: app
+          project-name: workflow_dispatch
       - name: Go Build
         uses: unfor19/release-action/golang/1.17beta1@master
         with:
           action: build
-          src-dir: ${{ steps.get-src-dir-path.outputs.src-dir }}"
-          project-name: app
+          project-name: workflow_dispatch
       - name: Go Test
         uses: unfor19/release-action/golang/1.17beta1@master
         with:
           action: test
-          src-dir: ${{ steps.get-src-dir-path.outputs.src-dir }}"
-          project-name: app
+          project-name: workflow_dispatch
       - name: Release
         uses: unfor19/release-action/golang/1.17beta1@master
         with:
           action: release
-          src-dir: ${{ steps.get-src-dir-path.outputs.src-dir }}"
-          project-name: app
+          project-name: workflow_dispatch
           gh-token: ${{ secrets.GH_TOKEN }}
