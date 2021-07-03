@@ -42,7 +42,7 @@ jobs:
           path: |
             .cache-modules
             .cache-go-build
-          key: ${{ runner.os }}-golang-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-${{ hashFiles('**/go.sum') }}-v2
+          key: ${{ runner.os }}-golang-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v1
           restore-keys: |
             ${{ runner.os }}-golang-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-
       - name: Get Dependencies
