@@ -34,12 +34,12 @@ ls -lh
 log_msg "Finished downloading file"
 
 log_msg "Extracting file ..."
-tar -xzf "$_FILE_NAME"
+tar -xzf "$_FILE_NAME" --one-top-level
 ls -lh
 log_msg "Finished extracting file"
 
 log_msg "Getting SRC_DIR ..."
-_SRC_DIR=$(tar -tf "$_FILE_NAME" | head -1 | cut -f1 -d/)
+_SRC_DIR="${_FILE_NAME%.t*}"
 log_msg "SRC_DIR=${_SRC_DIR}"
 
 log_msg "Setting output for GitHub Action ..."
