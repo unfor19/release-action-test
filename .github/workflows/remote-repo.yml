@@ -1,4 +1,4 @@
-name: Release-Test-go1.17beta1
+name: Release-Test-Remote-Repo
 
 on:
   workflow_dispatch:
