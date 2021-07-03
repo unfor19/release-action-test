@@ -43,5 +43,5 @@ _SRC_DIR="${_FILE_NAME%.t*}"
 log_msg "SRC_DIR=${_SRC_DIR}"
 
 log_msg "Setting output for GitHub Action ..."
-echo "::set-output name=src-dir::${_SRC_DIR}"
+echo "::set-output name=SRC_DIR::${_SRC_DIR}"
 log_msg "Completed successfully"
