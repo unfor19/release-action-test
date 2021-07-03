@@ -21,6 +21,8 @@ if [[ "$_TARGET_URL" = "" ]]; then
     error_msg "Must provide target-url"
 fi
 
+log_msg "PWD = $PWD"
+
 log_msg "Target URL: ${_TARGET_URL}"
 log_msg "Extracting file name ..."
 _FILE_NAME=$(basename "${TARGET_URL}")
@@ -28,10 +30,12 @@ log_msg "File name: ${_FILE_NAME}"
 
 log_msg "Downloading file ..."
 wget -q -O "$_FILE_NAME" "$TARGET_URL"
+ls -lh
 log_msg "Finished downloading file"
 
 log_msg "Extracting file ..."
 tar -xzf "$_FILE_NAME"
+ls -lh
 log_msg "Finished extracting file"
 
 log_msg "Getting SRC_DIR ..."
