@@ -38,7 +38,7 @@ jobs:
           wget -q -O "$_FILE_NAME" "$TARGET_URL"
           tar -xzf "$_FILE_NAME"
           _SRC_DIR="$(tar -tzf "$_FILE_NAME" | head -1 | cut -f1 -d"/")"
-          echo '::set-output name=src-dir::${_SRC_DIR}'
+          echo '::set-output name=src-dir::'"${_SRC_DIR}"'
       - name: Cache Go Build and Modules
         id: cache-go-modules
         uses: actions/cache@v2
