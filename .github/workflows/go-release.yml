@@ -13,6 +13,10 @@ on:
         description: "Branch to set as prerelease"
         required: false
         default: "master"
+      go-version:
+        description: "Go version"
+        required: false
+        default: "1.16"
 
 jobs:
   test:
@@ -40,13 +44,13 @@ jobs:
             ${{ runner.os }}-go-modules-test-${{ hashFiles('**/go.sum') }}-app-v2
       - name: Get Dependencies
         if: steps.cache-go-modules.outputs.cache-hit != 'true'
-        uses: unfor19/release-action/golang/1.16@master
+        uses: unfor19/release-action/golang/${{ github.event.inputs.go-version }}@master
         with:
           action: dependencies
           src-dir: golang
           project-name: app
       - name: Go Test
-        uses: unfor19/release-action/golang/1.16@master
+        uses: unfor19/release-action/golang/${{ github.event.inputs.go-version }}@master
         with:
           action: test
           src-dir: golang
@@ -100,13 +104,13 @@ jobs:
             ${{ runner.os }}-go-modules-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-${{ hashFiles('**/go.sum') }}-app-v2
       - name: Get Dependencies
         if: steps.cache-go-modules.outputs.cache-hit != 'true'
-        uses: unfor19/release-action/golang/1.16@master
+        uses: unfor19/release-action/golang/${{ github.event.inputs.go-version }}@master
         with:
           action: dependencies
           src-dir: golang
           project-name: app
       - name: Go Build
-        uses: unfor19/release-action/golang/1.16@master
+        uses: unfor19/release-action/golang/${{ github.event.inputs.go-version }}@master
         with:
           action: build
           src-dir: golang
