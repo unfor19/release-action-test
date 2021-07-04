@@ -50,6 +50,11 @@ jobs:
           action: test
           src-dir: ${{ steps.get-src-dir-path.outputs.SRC_DIR }}
           project-name: workflow_dispatch
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          files: test-results.xml
   release:
     name: Release
     runs-on: ubuntu-20.04
