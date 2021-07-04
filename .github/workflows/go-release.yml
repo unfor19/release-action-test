@@ -51,6 +51,12 @@ jobs:
           action: test
           src-dir: golang
           project-name: app
+      - name: Upload Test Results As Artifact
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: test_report
+          path: test_report.html
   release:
     name: Release
     runs-on: ubuntu-20.04
