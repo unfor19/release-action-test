@@ -28,7 +28,7 @@ jobs:
             .cache-go-build
           key: ${{ runner.os }}-go-build-test-${{ hashFiles('**/go.sum') }}-app-v2
           restore-keys: |
-            ${{ runner.os }}-go-build-test-app-v2
+            ${{ runner.os }}-go-build-test-${{ hashFiles('**/go.sum') }}-app-v2
       - name: Cache Go Modules
         id: cache-go-modules
         uses: actions/cache@v2
@@ -82,7 +82,7 @@ jobs:
             .cache-go-build
           key: ${{ runner.os }}-go-build-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-${{ hashFiles('**/go.sum') }}-app-v2
           restore-keys: |
-            ${{ runner.os }}-go-build-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-app-v2
+            ${{ runner.os }}-go-build-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-${{ hashFiles('**/go.sum') }}-app-v2
       - name: Cache Go Modules
         id: cache-go-modules
         uses: actions/cache@v2

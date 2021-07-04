@@ -27,7 +27,7 @@ jobs:
             .cache-go-build
           key: ${{ runner.os }}-go-build-test-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v2
           restore-keys: |
-            ${{ runner.os }}-go-build-test-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v2
+            ${{ runner.os }}-go-build-test-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v2
       - name: Cache Go Modules
         id: cache-go-modules
         uses: actions/cache@v2
@@ -86,7 +86,7 @@ jobs:
             .cache-go-build
           key: ${{ runner.os }}-go-build-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v2
           restore-keys: |
-            ${{ runner.os }}-go-build-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v2
+            ${{ runner.os }}-go-build-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v2
       - name: Cache Go Modules
         id: cache-go-modules
         uses: actions/cache@v2
