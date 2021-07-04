@@ -30,7 +30,7 @@ jobs:
           TARGET_URL: ${{ github.event.inputs.target-url }}
         run: scripts/workflow_dispatch.sh
       - name: Cache Go Build
-        id: cache-go-modules
+        id: cache-go-build
         uses: actions/cache@v2
         with:
           path: |
