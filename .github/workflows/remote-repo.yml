@@ -39,13 +39,13 @@ jobs:
             ${{ runner.os }}-go-modules-test-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v3
       - name: Get Dependencies
         if: steps.cache-go-modules.outputs.cache-hit != 'true'
-        uses: unfor19/release-action/golang/1.16@master
+        uses: unfor19/release-action/golang/1.15@master
         with:
           action: dependencies
           src-dir: ${{ steps.get-src-dir-path.outputs.SRC_DIR }}
           project-name: workflow_dispatch
       - name: Go Test
-        uses: unfor19/release-action/golang/1.16@master
+        uses: unfor19/release-action/golang/1.15@master
         with:
           action: test
           src-dir: ${{ steps.get-src-dir-path.outputs.SRC_DIR }}
@@ -104,19 +104,19 @@ jobs:
             ${{ runner.os }}-go-modules-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v3
       - name: Get Dependencies
         if: steps.cache-go-modules.outputs.cache-hit != 'true'
-        uses: unfor19/release-action/golang/1.16@master
+        uses: unfor19/release-action/golang/1.15@master
         with:
           action: dependencies
           src-dir: ${{ steps.get-src-dir-path.outputs.SRC_DIR }}
           project-name: workflow_dispatch
       - name: Go Build
-        uses: unfor19/release-action/golang/1.16@master
+        uses: unfor19/release-action/golang/1.15@master
         with:
           action: build
           src-dir: ${{ steps.get-src-dir-path.outputs.SRC_DIR }}
           project-name: workflow_dispatch
       - name: Release
-        uses: unfor19/release-action/golang/1.16@master
+        uses: unfor19/release-action/golang/1.15@master
         with:
           action: release
           src-dir: ${{ steps.get-src-dir-path.outputs.SRC_DIR }}
