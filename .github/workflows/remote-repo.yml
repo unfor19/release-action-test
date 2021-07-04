@@ -18,10 +18,6 @@ jobs:
         id: get-src-dir-path
         env:
           TARGET_URL: ${{ github.event.inputs.target-url }}
-      - name: Get src-dir path
-        id: get-src-dir-path
-        env:
-          TARGET_URL: ${{ github.event.inputs.target-url }}
         run: scripts/workflow_dispatch.sh
       - name: Cache Go Build
         id: cache-go-modules

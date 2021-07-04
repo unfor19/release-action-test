@@ -20,15 +20,6 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@master
-      - name: Get src-dir path
-        id: get-src-dir-path
-        env:
-          TARGET_URL: ${{ github.event.inputs.target-url }}
-      - name: Get src-dir path
-        id: get-src-dir-path
-        env:
-          TARGET_URL: ${{ github.event.inputs.target-url }}
-        run: scripts/workflow_dispatch.sh
       - name: Cache Go Build
         id: cache-go-build
         uses: actions/cache@v2
@@ -83,11 +74,6 @@ jobs:
       GOARCH: ${{ matrix.GOARCH }}
     steps:
       - uses: actions/checkout@master
-      - name: Get src-dir path
-        id: get-src-dir-path
-        env:
-          TARGET_URL: ${{ github.event.inputs.target-url }}
-        run: scripts/workflow_dispatch.sh
       - name: Cache Go Build
         id: cache-go-modules
         uses: actions/cache@v2
