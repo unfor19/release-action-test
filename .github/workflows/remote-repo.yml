@@ -50,6 +50,12 @@ jobs:
           action: test
           src-dir: ${{ steps.get-src-dir-path.outputs.SRC_DIR }}
           project-name: workflow_dispatch
+      - name: Upload Test Results As Artifact
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: test-results-xml
+          path: test-results.xml
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
