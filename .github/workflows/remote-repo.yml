@@ -19,31 +19,31 @@ jobs:
         env:
           TARGET_URL: ${{ github.event.inputs.target-url }}
         run: scripts/workflow_dispatch.sh
-      - name: Cache Go Build
-        id: cache-go-build
-        uses: actions/cache@v2
-        with:
-          path: |
-            .cache-go-build
-          key: ${{ runner.os }}-go-build-test-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v3
-          restore-keys: |
-            ${{ runner.os }}-go-build-test-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v3
-      - name: Cache Go Modules
-        id: cache-go-modules
-        uses: actions/cache@v2
-        with:
-          path: |
-            .cache-modules
-          key: ${{ runner.os }}-go-modules-test-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v3
-          restore-keys: |
-            ${{ runner.os }}-go-modules-test-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v3
-      - name: Get Dependencies
-        if: steps.cache-go-modules.outputs.cache-hit != 'true'
-        uses: unfor19/release-action/golang/1.16@master
-        with:
-          action: dependencies
-          src-dir: ${{ steps.get-src-dir-path.outputs.SRC_DIR }}
-          project-name: workflow_dispatch
+      # - name: Cache Go Build
+      #   id: cache-go-build
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: |
+      #       .cache-go-build
+      #     key: ${{ runner.os }}-go-build-test-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v3
+      #     restore-keys: |
+      #       ${{ runner.os }}-go-build-test-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v3
+      # - name: Cache Go Modules
+      #   id: cache-go-modules
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: |
+      #       .cache-modules
+      #     key: ${{ runner.os }}-go-modules-test-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v3
+      #     restore-keys: |
+      #       ${{ runner.os }}-go-modules-test-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v3
+      # - name: Get Dependencies
+      #   if: steps.cache-go-modules.outputs.cache-hit != 'true'
+      #   uses: unfor19/release-action/golang/1.16@master
+      #   with:
+      #     action: dependencies
+      #     src-dir: ${{ steps.get-src-dir-path.outputs.SRC_DIR }}
+      #     project-name: workflow_dispatch
       - name: Go Test
         uses: unfor19/release-action/golang/1.16@master
         with:
