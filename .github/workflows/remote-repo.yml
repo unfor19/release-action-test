@@ -25,18 +25,18 @@ jobs:
         with:
           path: |
             .cache-go-build
-          key: ${{ runner.os }}-go-build-test-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v2
+          key: ${{ runner.os }}-go-build-test-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v3
           restore-keys: |
-            ${{ runner.os }}-go-build-test-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v2
+            ${{ runner.os }}-go-build-test-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v3
       - name: Cache Go Modules
         id: cache-go-modules
         uses: actions/cache@v2
         with:
           path: |
             .cache-modules
-          key: ${{ runner.os }}-go-modules-test-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v2
+          key: ${{ runner.os }}-go-modules-test-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v3
           restore-keys: |
-            ${{ runner.os }}-go-modules-test-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v2
+            ${{ runner.os }}-go-modules-test-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v3
       - name: Get Dependencies
         if: steps.cache-go-modules.outputs.cache-hit != 'true'
         uses: unfor19/release-action/golang/1.16@master
@@ -84,18 +84,18 @@ jobs:
         with:
           path: |
             .cache-go-build
-          key: ${{ runner.os }}-go-build-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v2
+          key: ${{ runner.os }}-go-build-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v3
           restore-keys: |
-            ${{ runner.os }}-go-build-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v2
+            ${{ runner.os }}-go-build-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v3
       - name: Cache Go Modules
         id: cache-go-modules
         uses: actions/cache@v2
         with:
           path: |
             .cache-modules
-          key: ${{ runner.os }}-go-modules-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v2
+          key: ${{ runner.os }}-go-modules-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v3
           restore-keys: |
-            ${{ runner.os }}-go-modules-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v2
+            ${{ runner.os }}-go-modules-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-${{ hashFiles('**/go.sum') }}-${{ steps.get-src-dir-path.outputs.SRC_DIR }}-v3
       - name: Get Dependencies
         if: steps.cache-go-modules.outputs.cache-hit != 'true'
         uses: unfor19/release-action/golang/1.16@master
