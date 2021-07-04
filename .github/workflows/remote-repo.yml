@@ -54,13 +54,8 @@ jobs:
         uses: actions/upload-artifact@v2
         if: always()
         with:
-          name: test-results-xml
-          path: test-results.xml
-      - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1
-        if: always()
-        with:
-          files: test-results.xml
+          name: test_report
+          path: test_report.html
   release:
     name: Release
     runs-on: ubuntu-20.04
