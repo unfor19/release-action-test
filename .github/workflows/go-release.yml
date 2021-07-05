@@ -40,13 +40,13 @@ jobs:
             ${{ runner.os }}-go-modules-test-${{ hashFiles('**/go.sum') }}-app-v2
       - name: Get Dependencies
         if: steps.cache-go-modules.outputs.cache-hit != 'true'
-        uses: unfor19/release-action/golang/1.15@master
+        uses: unfor19/release-action/golang/1.16@master
         with:
           action: dependencies
           src-dir: golang
           project-name: app
       - name: Go Test
-        uses: unfor19/release-action/golang/1.15@master
+        uses: unfor19/release-action/golang/1.16@master
         with:
           action: test
           src-dir: golang
@@ -100,13 +100,13 @@ jobs:
             ${{ runner.os }}-go-modules-${{ matrix.GOOS }}-${{ matrix.GOARCH }}-${{ hashFiles('**/go.sum') }}-app-v2
       - name: Get Dependencies
         if: steps.cache-go-modules.outputs.cache-hit != 'true'
-        uses: unfor19/release-action/golang/1.15@master
+        uses: unfor19/release-action/golang/1.16@master
         with:
           action: dependencies
           src-dir: golang
           project-name: app
       - name: Go Build
-        uses: unfor19/release-action/golang/1.15@master
+        uses: unfor19/release-action/golang/1.16@master
         with:
           action: build
           src-dir: golang
