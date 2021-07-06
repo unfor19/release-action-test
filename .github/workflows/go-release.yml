@@ -104,6 +104,7 @@ jobs:
           src-dir: golang
           project-name: app
       - name: Go Build
+        id: go-build
         uses: unfor19/release-action/golang/1.16@master
         with:
           action: build
