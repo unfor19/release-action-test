@@ -142,6 +142,7 @@ jobs:
       GOOS: ${{ matrix.GOOS }}
       GOARCH: ${{ matrix.GOARCH }}
     steps:
+      - uses: actions/checkout@master
       # - name: Get src-dir path
       #   id: get-src-dir-path
       #   env:
