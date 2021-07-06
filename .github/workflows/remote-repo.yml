@@ -122,7 +122,7 @@ jobs:
   release:
     name: Release
     needs:
-      - test
+      # - test
       - build
     runs-on: ubuntu-20.04
     strategy:
@@ -142,18 +142,19 @@ jobs:
       GOOS: ${{ matrix.GOOS }}
       GOARCH: ${{ matrix.GOARCH }}
     steps:
-      - name: Get src-dir path
-        id: get-src-dir-path
-        env:
-          TARGET_URL: ${{ github.event.inputs.target-url }}
-        run: scripts/workflow_dispatch.sh
+      # - name: Get src-dir path
+      #   id: get-src-dir-path
+      #   env:
+      #     TARGET_URL: ${{ github.event.inputs.target-url }}
+      #   run: scripts/workflow_dispatch.sh
       - uses: actions/download-artifact@v2
+        name: Download Build Artifact
         with:
           name: "${{ matrix.GOOS }}-${{ matrix.GOARCH }}-workflow_dispatch"
       - name: GitHub Release
         uses: unfor19/release-action/golang/1.16@master
         with:
           action: release
-          src-dir: ${{ steps.get-src-dir-path.outputs.SRC_DIR }}
+          # src-dir: ${{ steps.get-src-dir-path.outputs.SRC_DIR }}
           project-name: workflow_dispatch
           gh-token: ${{ secrets.GH_TOKEN }}
