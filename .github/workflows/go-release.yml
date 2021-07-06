@@ -60,8 +60,6 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-20.04
-    needs:
-      - test
     strategy:
       matrix:
         include:
@@ -121,6 +119,7 @@ jobs:
     runs-on: ubuntu-20.04
     needs:
       - test
+      - build
     strategy:
       matrix:
         include:
