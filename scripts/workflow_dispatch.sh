@@ -23,7 +23,8 @@ fi
 
 _BEARER_TOKEN="${BEARER_TOKEN:-"$GH_TOKEN"}"
 _BEARER_TOKEN="${_BEARER_TOKEN:-"$GITHUB_TOKEN"}"
-if [[ -n "$_BEARER_TOKEN" ]]; then
+_USE_BEARER_TOKEN="${USE_BEARER_TOKEN:-"false"}"
+if [[ "$_USE_BEARER_TOKEN" = "true" && -n "$_BEARER_TOKEN" ]]; then
   _WGET_BEARER_AUTH="-header=\"Authorization: Bearer ${_BEARER_TOKEN}\""
 fi
 
