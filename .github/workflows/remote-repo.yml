@@ -9,7 +9,7 @@ on:
         required: true
       use-bearer-token:
         default: "false"
-        description: Use GH_TOKEN or GITHUB_TOKEN when attempting to download remote repo
+        description: Use GH_TOKEN or GITHUB_TOKEN
         required: false
 
 jobs:
