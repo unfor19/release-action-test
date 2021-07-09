@@ -24,8 +24,10 @@ fi
 _BEARER_TOKEN="${BEARER_TOKEN:-"$GH_TOKEN"}"
 _BEARER_TOKEN="${_BEARER_TOKEN:-"$GITHUB_TOKEN"}"
 _USE_BEARER_TOKEN="${USE_BEARER_TOKEN:-"false"}"
+_WGET_BEARER_AUTH="${WGET_BEARER_TOKEN:-""}"
 if [[ "$_USE_BEARER_TOKEN" = "true" && -n "$_BEARER_TOKEN" ]]; then
-  _WGET_BEARER_AUTH="-header=\"Authorization: Bearer ${_BEARER_TOKEN}\""
+  log_msg "Using bearer token to get remote repo"
+  _WGET_BEARER_AUTH="\"Authorization: Bearer ${_BEARER_TOKEN}\""
 fi
 
 log_msg "PWD = $PWD"
@@ -36,7 +38,7 @@ _FILE_NAME=$(basename "${TARGET_URL}")
 log_msg "File name: ${_FILE_NAME}"
 
 log_msg "Downloading file ..."
-wget "$_WGET_BEARER_AUTH" -O "$_FILE_NAME" "$TARGET_URL"
+wget -header="$_WGET_BEARER_AUTH" -O "$_FILE_NAME" "$TARGET_URL"
 ls -lh
 log_msg "Finished downloading file"
 
