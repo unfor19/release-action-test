@@ -36,7 +36,7 @@ _FILE_NAME=$(basename "${TARGET_URL}")
 log_msg "File name: ${_FILE_NAME}"
 
 log_msg "Downloading file ..."
-wget "$_WGET_BEARER_AUTH" -q -O "$_FILE_NAME" "$TARGET_URL"
+wget "$_WGET_BEARER_AUTH" -O "$_FILE_NAME" "$TARGET_URL"
 ls -lh
 log_msg "Finished downloading file"
 
