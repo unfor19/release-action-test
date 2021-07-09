@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       target-url:
-        default: https://github.com/hashicorp/terraform/archive/refs/tags/v1.1.0-alpha20210630.tar.gz
+        default: https://github.com/hashicorp/terraform/archive/refs/tags/v1.0.2.tar.gz
         description: ""
         required: true
       use-bearer-token:
